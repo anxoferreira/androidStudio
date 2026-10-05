@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">b01HolaMundo</string>
+    <string name="pres">Hola soy anxo</string>
+    <string name="numero">b01 Hola mundo</string>
+    <string name="boton">Cerrar</string>
+    <string name="saludo">Saluda</string>
+    <string name="salir">Salir</string>
+</resources>

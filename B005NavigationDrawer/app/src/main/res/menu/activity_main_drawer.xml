@@ -20,5 +20,9 @@
             android:id="@+id/nav_accessible"
             android:icon="@drawable/outline_accessible_menu_24"
             android:title="@string/accessible"/>
+        <item
+            android:id="@+id/nav_accesibility"
+            android:icon="@drawable/outline_accessibility_24"
+            android:title="@string/accesibility"/>
     </group>
 </menu>

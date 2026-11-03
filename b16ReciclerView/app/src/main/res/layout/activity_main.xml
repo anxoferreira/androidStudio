@@ -14,13 +14,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/text1"
-        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
+        El alto se ajusta al contenido (wrap_content) hasta un máximo.
+        Si hay más elementos, se habilita el scroll interno de forma limpia.
+    -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
@@ -29,7 +32,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
-        android:background="@color/white"
+        android:background="@color/orange"
         android:overScrollMode="ifContentScrolls"
         android:scrollbars="vertical"
         app:layout_constrainedHeight="true"
@@ -48,8 +51,6 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="68dp"
         android:hint="@string/text2"
-        android:textColor="@color/black"
-        android:textColorHint="#94A3B8"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"

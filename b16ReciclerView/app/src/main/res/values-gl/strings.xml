@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">b16ReciclerView</string>
+    <string name="text2">Introduce un país</string>
+    <string name="button">Engadir</string>
+</resources>

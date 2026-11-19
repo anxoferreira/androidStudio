@@ -1,6 +1,7 @@
 package com.example.b20cardview
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -9,27 +10,42 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var recycler: RecyclerView
-    private lateinit var adapter: AnimeAdapter
-    private lateinit var repositorio: DataRepository
+    private var recycler: RecyclerView? = null
+    private var adapter: RecyclerView.Adapter<*>? = null
+    private var lManager: RecyclerView.LayoutManager? = null
+    private var repositorio: DataRepository? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        this.enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        // Configurar RecyclerView
         recycler = findViewById(R.id.recyclerView)
-        recycler.setHasFixedSize(true)
-        recycler.layoutManager = LinearLayoutManager(this)
+        recycler?.setHasFixedSize(true)
+
+        lManager = LinearLayoutManager(this)
+        recycler?.layoutManager = lManager
 
         repositorio = DataRepository()
-        adapter = AnimeAdapter(repositorio.obtenerListaAnimes())
-        recycler.adapter = adapter
+        adapter = AnimeAdapter(repositorio!!.obtenerListaAnimes())
+        recycler?.adapter = adapter
+
+        // Configurar el botón AGREGAR
+        val btnAgregar = findViewById<Button>(R.id.button)
+        btnAgregar.setOnClickListener {
+            val nuevoAnime = Anime(R.drawable.angel, "Nuevo Anime", 100)
+            repositorio?.agregarAnime(nuevoAnime)
+
+            val nuevaPosicion = repositorio!!.obtenerListaAnimes().size - 1
+            adapter?.notifyItemInserted(nuevaPosicion)
+            recycler?.scrollToPosition(nuevaPosicion)
+        }
     }
 }
